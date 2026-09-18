@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f3ed">
+  <title>Samuel &amp; Cristina | Wedding</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #f7f3ed;
+      --paper: #fffdf9;
+      --sage: #aebca9;
+      --sage-deep: #627264;
+      --gold: #b99a68;
+      --ink: #333d38;
+      --muted: #78817b;
+      --line: rgba(98, 114, 100, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 32px 18px;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 15% 12%, rgba(185, 154, 104, 0.12), transparent 26%),
+        radial-gradient(circle at 88% 85%, rgba(174, 188, 169, 0.24), transparent 30%),
+        var(--cream);
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    main {
+      width: min(100%, 920px);
+      padding: clamp(42px, 8vw, 90px) clamp(22px, 8vw, 82px);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      background: rgba(255, 253, 249, 0.88);
+      border: 1px solid var(--line);
+      box-shadow: 0 22px 60px rgba(75, 86, 76, 0.1);
+    }
+
+    main::before,
+    main::after {
+      content: '';
+      width: 120px;
+      height: 120px;
+      position: absolute;
+      border: 1px solid rgba(185, 154, 104, 0.35);
+      transform: rotate(45deg);
+      pointer-events: none;
+    }
+
+    main::before {
+      top: -78px;
+      left: -78px;
+    }
+
+    main::after {
+      right: -78px;
+      bottom: -78px;
+    }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      color: var(--sage-deep);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 690px;
+      margin: 0 auto;
+      color: var(--ink);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.6rem, 9vw, 7.3rem);
+      font-weight: 500;
+      line-height: 0.85;
+      letter-spacing: -0.02em;
+    }
+
+    .names {
+      margin: 28px 0 0;
+      color: var(--gold);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.45rem, 3vw, 2rem);
+      letter-spacing: 0.08em;
+    }
+
+    .divider {
+      width: 72px;
+      height: 1px;
+      margin: 34px auto 38px;
+      background: var(--gold);
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(12px, 4vw, 42px);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .unit {
+      min-width: 0;
+    }
+
+    .number {
+      display: block;
+      color: var(--sage-deep);
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2rem, 7vw, 4.7rem);
+      font-weight: 500;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .label {
+      display: block;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: clamp(0.58rem, 1.4vw, 0.7rem);
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .date {
+      margin: 48px 0 0;
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .celebration {
+      display: none;
+      margin: 16px 0 0;
+      color: var(--gold);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+    }
+
+    .is-complete .countdown,
+    .is-complete .date {
+      display: none;
+    }
+
+    .is-complete .celebration {
+      display: block;
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 16px 12px;
+      }
+
+      main {
+        padding: 52px 18px 56px;
+      }
+
+      .countdown {
+        gap: 8px;
+      }
+
+      .label {
+        letter-spacing: 0.1em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main id="countdown-card">
+    <h1>El gran día se acerca...</h1>
+    <div class="divider" aria-hidden="true"></div>
+
+    <section class="countdown" aria-label="Countdown to the wedding">
+      <div class="unit">
+        <span class="number" id="days">00</span>
+        <span class="label">Días</span>
+      </div>
+      <div class="unit">
+        <span class="number" id="hours">00</span>
+        <span class="label">Horas</span>
+      </div>
+      <div class="unit">
+        <span class="number" id="minutes">00</span>
+        <span class="label">Minutos</span>
+      </div>
+      <div class="unit">
+        <span class="number" id="seconds">00</span>
+        <span class="label">Segundos</span>
+      </div>
+    </section>
+
+    <p class="date">15 Mayo 2027 <span aria-hidden="true">&bull;</span> 12:00 PM</p>
+    <p class="celebration" role="status">The Big Day is Here!</p>
+  </main>
+
+  <script>
+    const targetDate = new Date(2027, 4, 15, 12, 0, 0);
+    const countdownCard = document.getElementById('countdown-card');
+    const units = {
+      days: document.getElementById('days'),
+      hours: document.getElementById('hours'),
+      minutes: document.getElementById('minutes'),
+      seconds: document.getElementById('seconds')
+    };
+
+    const formatNumber = (value) => String(value).padStart(2, '0');
+
+    function updateCountdown() {
+      const remaining = targetDate.getTime() - Date.now();
+
+      if (remaining <= 0) {
+        countdownCard.classList.add('is-complete');
+        return;
+      }
+
+      const totalSeconds = Math.floor(remaining / 1000);
+      const days = Math.floor(totalSeconds / 86400);
+      const hours = Math.floor((totalSeconds % 86400) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      units.days.textContent = formatNumber(days);
+      units.hours.textContent = formatNumber(hours);
+      units.minutes.textContent = formatNumber(minutes);
+      units.seconds.textContent = formatNumber(seconds);
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
